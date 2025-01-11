@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efial</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        #enterb {
+            background-color: transparent;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 40px;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            outline: none;
+        }
+
+        #content {
+            display: none;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            position: relative;
+        }
+
+        #videocon {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            justify-content: center;
+            align-items: center;
+            z-index: 0;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: blur(25px);
+        }
+
+        #videocon:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <button id="enterb" onclick="startvid()">Press to enter.</button>
+
+    <div id="content">
+        <div id="videocon">
+            <video id="video" autoplay muted>
+                <source src="media/video.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <script>
+        function startvid() {
+            document.getElementById('enterb').style.display = 'none';
+            var content = document.getElementById('content');
+            content.style.display = 'block';
+            content.style.opacity = '1';
+            var videocon = document.getElementById('videocon');
+            videocon.style.display = 'flex';
+            var video = document.getElementById('video');
+            video.play();
+            video.muted = false;
+        }
+    </script>
+
+</body>
+</html>
